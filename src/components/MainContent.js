@@ -1,13 +1,20 @@
 /* eslint-disable jsx-a11y/alt-text */
 
+import { useState } from 'react';
 import search from '../assets/images/search.svg';
 import SideBar from './sideBar/SideBar';
+import SupporterModal from './SupporterModal';
 // import sorting from '../assets/images/Sorting.svg'
 
 const MainContent = () => {
+
+
+    const [showModal, setShowModal] = useState(false)
+
     return ( 
         <div className="flex gap-4 mx-auto max-w-[1344px] justify-between mt-8">
             <SideBar />
+           {showModal && <SupporterModal setShowModal={setShowModal} />}
             <div className="w-[1002px] bg-white rounded-lg p-[40px] ">
                 <div className='flex'>
                     <div className='w-[567px]'>
@@ -19,7 +26,7 @@ const MainContent = () => {
                         <input className='outline-none text-sm' type="text" name="search" placeholder='პოლიტიკოსის ძიება'/>
                     </div>
                 </div>
-
+                
                 <div className="mt-8">
                     <table className="w-full text-right text-sm   text-gray-500">
                         <thead className="text-xs  text-gray-700 uppercase bg-gray-50">
@@ -60,7 +67,7 @@ const MainContent = () => {
                                     </div>
                                 </td>
                                 <td className="py-4 text-center">
-                                    <div class="group cursor-pointer flex justify-start items-center">
+                                    <div onClick={() => setShowModal(true)} class="group cursor-pointer flex justify-start items-center">
                                         <span className='text-lightBlack font-medium text-[14px] leading-[24px] mr-[25px]'>1 232 ადამიანი</span>
                                         <div class="flex items-center justify-center">
 
